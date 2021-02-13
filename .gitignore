@@ -1,0 +1,5 @@
+eop-code/
+*.aux
+*.dvi
+*.log
+*.pdf
