@@ -1,4 +1,4 @@
-# EoP Solutions
+# Elements of Programming Solutions
 
 These are my solutions to [Elements of
 Programming](http://elementsofprogramming.com).  I have attempted to prove the
