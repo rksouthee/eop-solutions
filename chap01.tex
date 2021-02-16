@@ -5,6 +5,13 @@
 	If a value type is uniquely represented, equality implies representational equality.
 \end{lemma}
 
+\begin{proof}
+	Let $T$ be a value type that is uniquely represented. We are going to assume equality,
+	then we shall prove representational equality. If two values represent the same abstract entity,
+	they must have the same value since $T$ is uniquely represented. If the values are the same, the datums
+	are identical sequences of 0s and 1s, that is, they are representationally equal.
+\end{proof}
+
 \begin{lemma}
 	If a value type is not ambiguous, representational equality implies equality.
 \end{lemma}
