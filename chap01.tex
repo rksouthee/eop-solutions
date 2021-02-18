@@ -27,6 +27,13 @@
 	A well-formed object is partially formed.
 \end{lemma}
 
+\begin{proof}
+	To show that a well-formed object is partially formed we need to show that it can be assigned to
+	or destroyed. If our object is well-formed then the destructor would be invoked implicitly at the
+	end of its scope. If we have destruction then we can implement assignment by calling the destructor
+	and then calling the copy constructor.
+\end{proof}
+
 \begin{exercise}
 	Extend the notion of regularity to input/output objects of a procedure, that is, to objects that are
 	modified as well as read.
