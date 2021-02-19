@@ -1,2 +1,15 @@
 
 \chapter{Transformations and Their Orbits}
+
+\begin{lemma}
+	$\mathtt{euclidean\_norm}(x, y, z) = \mathtt{euclidean\_norm}(\mathtt{euclidean\_norm}(x, y), z)$
+\end{lemma}
+
+\begin{proof}
+	\begin{align*}
+		\mathtt{euclidean\_norm}(\mathtt{euclidean\_norm}(x, y), z)
+		&= \sqrt{\left (\sqrt{x^2 + y^2} \right )^2 + z^2}\\
+		&= \sqrt{x^2 + y^2 + z^2}\\
+		&= \mathtt{euclidean\_norm}(x, y, z)
+	\end{align*}
+\end{proof}
