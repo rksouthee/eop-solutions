@@ -2,6 +2,7 @@
 
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{listings}
 
 \theoremstyle{definition}
 \newtheorem{lemma}{Lemma}[chapter]
@@ -10,6 +11,13 @@
 
 \theoremstyle{remark}
 \newtheorem*{solution}{Solution}
+
+\lstset{
+	language=c++,
+	basicstyle=\ttfamily\normalsize,
+	commentstyle=\itshape\rmfamily,
+	columns=fullflexible,
+	texcl=true}
 
 \title{Elements of Programming Solutions}
 \author{Robert Southee}
