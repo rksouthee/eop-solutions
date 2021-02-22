@@ -39,6 +39,15 @@
 	An orbit contains at most one terminal element.
 \end{lemma}
 
+\begin{proof}
+	Let us assume that an orbit contains more than one terminal element. For simplicity,
+	let $x$ and $y$ be distinct elements, terminal under $f$. Since $x$ and $y$ belong
+	to the same orbit, they have a common element they're reachable from, let $z$ be
+	such an element, then $x = f^n(z)$ and $y = f^m(z)$. Without loss of generality,
+	$n < m$, then $y = f^{m - n}(x)$ but since $m - n \geq 1$ and $x$ is terminal, then
+	$f^{m - n}(x)$ is not defined.
+\end{proof}
+
 \begin{lemma}
 	$o = h + c$
 \end{lemma}
