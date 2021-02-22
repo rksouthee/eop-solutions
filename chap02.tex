@@ -24,6 +24,17 @@
 	An orbit does not contain both a cyclic and a terminal element.
 \end{lemma}
 
+\begin{proof}
+	Let $x$ be cyclic under $f$, that is, $x = f^n(x)$ for $n \geq 1$ and let $y$ be
+	terminal under $f$. Since $x$ and $y$ belong to the same orbit, and $y$ is a
+	terminal element, $y$ must be reachable from $x$. Since $y$ is reachable from $x$
+	we have $y = f^m(x)$ for $m \geq 0$. If $m < n$ then $x = f^{n - m}(y)$, but
+	$n - m \geq 1$ and since $y$ is terminal $f^{n - m}(y)$ is not defined. If $n = m$
+	then $x = y$, then we could substitute $y$ for $x$, that is $x = f^n(y)$, similarly
+	since $n \geq 1$, $f(y)$ is not defined. Finally, if $m > n$, then $x = f^{m - n}(y)$
+	but $y$ is not in the definition space of $f$.
+\end{proof}
+
 \begin{lemma}
 	An orbit contains at most one terminal element.
 \end{lemma}
