@@ -9,3 +9,6 @@ add_latex_document(eop.tex
 	)
 
 add_executable(ex_2_1 code/ex_2_1.cpp)
+
+add_executable(levy code/levy.cpp)
+target_include_directories(levy PRIVATE eop-code)
