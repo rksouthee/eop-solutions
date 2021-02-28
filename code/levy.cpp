@@ -10,14 +10,14 @@ DistanceType(F) cycle_length_nonterminating_orbit(Domain(F) x, F f)
     Domain(F) x0 = x;
 
     while (!(x == x0 && c != 0)) {
-	if (c == q) {
-	    x0 = x;
-	    c = 0;
-	    q = 2 * q;
-	} else {
-	    x = f(x);
-	    c = c + 1;
-	}
+        if (c == q) {
+            x0 = x;
+            c = 0;
+            q = 2 * q;
+        } else {
+            x = f(x);
+            c = c + 1;
+        }
     }
 
     return c;
@@ -41,7 +41,7 @@ struct index_map {
 
     int operator()(int x) const
     {
-	return p[x - 1];
+        return p[x - 1];
     }
 };
 
