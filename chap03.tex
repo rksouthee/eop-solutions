@@ -6,6 +6,19 @@
 	$a^na^m = a^ma^n = a^{n+m}$ (powers of the same element commute)
 \end{lemma}
 
+\begin{proof}
+	Because all the groupings are equivalent we can move around the parenthesis and eventually remove
+	the parentheses leaving us with $n + m$ elements.
+
+	\begin{align*}
+		a^na^m
+		&= (\underbrace{aa \ldots aa}_{n \text{ times}})(\underbrace{aa \dots aa}_{m \text{ times}})\\
+		&= (\underbrace{aa \ldots aa}_{m \text{ times}})(\underbrace{aa \dots aa}_{n \text{ times}})\\
+		&= a^{m + n}\\
+		&= a^{n + m}
+	\end{align*}
+\end{proof}
+
 \begin{lemma}
 	$(a^n)^m = a^{nm}$
 \end{lemma}
