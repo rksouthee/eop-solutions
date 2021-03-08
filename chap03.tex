@@ -38,6 +38,23 @@
 	The binary operation of composition is associative.
 \end{lemma}
 
+\begin{proof}
+	Let $f$, $g$, and $h$ be transformations on the same domain, we want to show
+	\[ h \circ (g \circ f) = (h \circ g) \circ f. \]
+	Using the definition of composition we have
+	\begin{align*}
+		h \circ (g \circ f)
+		&= h \circ (g(f(x)))\\
+		&= h(g(f(x)))
+	\end{align*}
+	and
+	\begin{align*}
+		(h \circ g) \circ f
+		&= (h \circ g)(f(x))\\
+		&= h(g(f(x))
+	\end{align*}
+\end{proof}
+
 \begin{lemma}
 	\verb|collision_point_nonterminating_orbit| can be used in the proof.
 \end{lemma}
