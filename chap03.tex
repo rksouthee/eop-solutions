@@ -68,4 +68,12 @@
 % TODO: should we include the code for power_3 for more context?
 \begin{exercise}
 	Convince yourself that the last three lines of code are correct
-\end{exericse}
+\end{exercise}
+
+\begin{solution}
+	After the loop we know that $n$ must be odd, and we can safely take the
+	floor of $n$. If $n$ is now zero then $n$ must've been one, in which case it is the
+	equivalent of $1a = a$ and we can return $a$. Finally we call \verb|power_accumulate_positive_0|,
+	we can safely pass $a$ as the accumulator because we need to account for the floor division
+	we performed earlier, and the \verb|op(a, a)| is also valid because of the division.
+\end{solution}
