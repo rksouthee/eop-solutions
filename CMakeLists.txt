@@ -7,6 +7,7 @@ include(UseLATEX.cmake)
 add_latex_document(eop.tex
 	INPUTS chap01.tex chap02.tex code/ex_2_1.cpp code/ex_2_2.cpp eop-code/eop.h
 	chap03.tex eop-code/integers.h
+	chap04.tex
 	)
 
 add_executable(ex_2_1 code/ex_2_1.cpp)
