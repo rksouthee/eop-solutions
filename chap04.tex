@@ -4,6 +4,16 @@
 	Give an example of a relation that is neither strict nor reflexive.
 \end{exercise}
 
+\begin{solution}
+	The equality of IEEE floating-point numbers is neither strict nor reflexive. To show this, we first
+	demonstrate that the relation is not strict; if we compare a well defined value, such as 0, then
+	the strict property will not hold since \verb|(!(0 == 0)) == false|. Second, we need to show that
+	the relation is irreflexive, we can do this if we compare \verb|NAN| for equality with itself, then
+	\verb|(NAN == NAN) == false|.
+
+	\lstinputlisting[language=c++, firstline=7, lastline=9]{code/ex_4_1.cpp}
+\end{solution}
+
 \begin{exercise}
 	Give an example of a symmetric relation that is not transitive.
 \end{exercise}
