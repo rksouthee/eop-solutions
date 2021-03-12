@@ -39,6 +39,20 @@
 	$\func{key\_function}(f, r) \Rightarrow \func{equivalence}(r)$
 \end{lemma}
 
+\begin{proof}
+	We need to show that the \verb|key_function| satisfies the necessary properties
+	of an equivalence relation on $r$.
+	\begin{align*}
+		r(a, b) \wedge r(b, c) \Rightarrow r(a, c)
+		&\Leftrightarrow f(a) = f(b) \wedge f(b) = f(c) \Rightarrow f(a) = f(c)\\
+		r(a, a)
+		&\Leftrightarrow f(a) = f(a)\\
+		r(a, b) \Rightarrow r(b, a)
+		&\Leftrightarrow f(a) = f(b) \Rightarrow f(b) = f(a)
+	\end{align*}
+	These are all satisfied because equality is an equivalence relation.
+\end{proof}
+
 \begin{lemma}
 	The symmetric complement of a weak ordering is an equivalence relation.
 \end{lemma}
