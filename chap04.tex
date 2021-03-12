@@ -88,6 +88,19 @@
 	\verb|select_2_5| performs six comparisons.
 \end{lemma}
 
+\begin{proof}
+	There is one comparison for each of the functions in the call stack for a
+	total of six comparisons.
+	\begin{itemize}
+		\item \verb|select_2_5|
+		\item \verb|select_2_5_ab|
+		\item \verb|select_2_5_ab_cd|
+		\item \verb|select_1_4_ab|
+		\item \verb|select_1_4_ab_cd|
+		\item \verb|select_0_2|
+	\end{itemize}
+\end{proof}
+
 \begin{exercise}
 	Find an algorithm for median of 5 that does slightly fewer comparisons
 	on average.
