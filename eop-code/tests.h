@@ -796,6 +796,27 @@ void algorithm_select_1_4()
     } while (next_permutation(t, l, less_second<int, int>()));
 }
 
+void algorithm_select_2_4()
+{
+    print("    select_2_4\n");
+    typedef pair<int, int> T;
+    T t[] = {T(1, 1), T(2, 2), T(3, 3), T(3, 4)};
+    pointer(T) l = t + sizeof(t) / sizeof(T);
+    do {
+        if (verbose) {
+            print("      3rd of ("); print_range(t, l); print(") is ");
+        }
+        T r = select_2_4(t[0], t[1], t[2], t[3],
+                         key_ordering< first<int, int>, less<int> >(first<int, int>(), less<int>()));
+        pointer(T) f = find_if(t, l, eq_first<int, int>(3));
+        Assert(f !=l && source(f) == r);
+        if (verbose) {
+            print(r);
+            print_eol();
+        }
+    } while (next_permutation(t, l, less_second<int, int>()));
+}
+
 void algorithm_select_1_4_stability_indices()
 {
     print("    select_1_4 with stability indices\n");
@@ -1079,6 +1100,7 @@ void test_ch_4()
     // Test select_1_4_ab_cd
     // Test select_1_4_ab
     algorithm_select_1_4();
+    algorithm_select_2_4();
     algorithm_select_1_4_stability_indices();
     algorithm_select_2_5_stability_indices();
 

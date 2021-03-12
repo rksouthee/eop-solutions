@@ -70,12 +70,19 @@
 \end{lemma}
 
 \begin{lemma}
+	Given a weak ordering $r$, then by the weak-trichotomy law
+	$r(a, b) \Rightarrow \lnot r(a, b)$.
+\end{lemma}
+
+\begin{lemma}
 	A weak ordering is strict.
 \end{lemma}
 
 \begin{exercise}
 	Implement \verb|select_2_4|.
 \end{exercise}
+
+\lstinputlisting[language=c++, firstline=759, lastline=787]{eop-code/eop.h}
 
 \begin{lemma}
 	\verb|select_2_5| performs six comparisons.

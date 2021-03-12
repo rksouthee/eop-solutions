@@ -756,6 +756,36 @@ const Domain(R)& select_1_4(const Domain(R)& a,
 
 // Exercise 4.4: select_2_4
 
+template <typename R>
+   requires(Relation(R))
+const Domain(R)& select_2_4_ab_cd(const Domain(R)& a,
+                                  const Domain(R)& b,
+                                  const Domain(R)& c,
+                                  const Domain(R)& d, R r) {
+   if (r(d, b)) return select_1_2(a, d, r);
+   return              select_1_2(b, c, r);
+}
+
+template <typename R>
+   requires(Relation(R))
+const Domain(R)& select_2_4_ab(const Domain(R)& a,
+                               const Domain(R)& b,
+                               const Domain(R)& c,
+                               const Domain(R)& d, R r) {
+   if (r(d, c)) return select_2_4_ab_cd(a, b, d, c, r);
+   return              select_2_4_ab_cd(a, b, c, d, r);
+}
+
+template <typename R>
+   requires(Relation(R))
+const Domain(R)& select_2_4(const Domain(R)& a,
+                            const Domain(R)& b,
+                            const Domain(R)& c,
+                            const Domain(R)& d, R r) {
+   if (r(b, a)) return select_2_4_ab(b, a, c, d, r);
+   return              select_2_4_ab(a, b, c, d, r);
+}
+
 
 // Order selection procedures with stability indices
 
