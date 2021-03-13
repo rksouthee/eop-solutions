@@ -263,3 +263,12 @@
 \begin{lemma}
 	In a Euclidean semiring, $a \cdot b = 0 \Rightarrow a = 0 \vee b = 0$.
 \end{lemma}
+
+\begin{lemma}
+	$\gcd$ terminates on a Euclidean semiring.
+\end{lemma}
+
+\begin{proof}
+	Since \verb|reaminder| decreases \verb|w| then eventually $\func{w}(a) = 0 \Rightarrow a = 0$ or
+	$\func{w}(b) = 0 \Rightarrow b = 0$ and the algorithm terminates.
+\end{proof}
