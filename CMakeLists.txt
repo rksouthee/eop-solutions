@@ -8,6 +8,7 @@ add_latex_document(eop_sln.tex
 	INPUTS chap01.tex chap02.tex code/ex_2_1.cpp code/ex_2_2.cpp eop-code/eop.h
 	chap03.tex eop-code/integers.h
 	chap04.tex code/ex_4_1.cpp
+	chap05.tex
 	)
 
 # TODO: Add the header files
