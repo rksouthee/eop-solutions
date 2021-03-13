@@ -219,3 +219,14 @@
 \begin{lemma}
 	$\gcd(\frac{a}{\gcd(a, b)}, \frac{b}{\gcd(a, b)}) = 1$
 \end{lemma}
+
+\begin{proof}
+	Let $d = \gcd(a, b)$, then $a = nd$ and $b = md$ where $\gcd(n, m) = 1$ since $d$ contains
+	all the common factors of $a$ and $b$.
+	\begin{align*}
+		\gcd(\frac{a}{\gcd(a, b)}, \frac{b}{\gcd(a, b)})
+		&= \gcd(\frac{nd}{d}, \frac{md}{d})\\
+		&= \gcd(n, m)\\
+		&= 1
+	\end{align*}
+\end{proof}
