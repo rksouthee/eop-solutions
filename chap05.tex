@@ -238,3 +238,14 @@
 \begin{proof}
 	Let $n = 2x$, then $n^2 = 4x^2 = 2(2x^2)$ which is even.
 \end{proof}
+
+\begin{lemma}
+	Every Archimedean monoid with a smallest positive element is Euclidean.
+\end{lemma}
+
+\begin{proof}
+	Since \verb|subtractive_gcd_nonzero| decreases one of the values at each
+	step of the algorithm, if there is a smallest positive element then the
+	algorithm will eventually reach it and the algorithm is guaranteed to
+	terminate.
+\end{proof}
