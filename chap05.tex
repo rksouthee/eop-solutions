@@ -166,3 +166,13 @@
 \begin{project}
 	Are there useful models of Archimedean monoids that are not halvable monoids?
 \end{project}
+
+\begin{lemma}
+	In an Archimedean monoid $T$ with positive $x, a, b$:
+	\begin{itemize}
+		\item $b \text{ divides } a \Leftrightarrow \func{remainder\_nonnegative}(a, b) = 0$
+		\item $b \text{ divides } a \Rightarrow b \leq a$
+		\item $a > b \wedge x \text{ divides } a \wedge x \text{ divides } b \Rightarrow x \text{ divides } (a - b)$
+		\item $x \text{ divides } a \wedge x \text{ divides } b \Rightarrow x \text{ divides } \func{remainder\_nonnegative}(a, b)$
+	\end{itemize}
+\end{lemma}
