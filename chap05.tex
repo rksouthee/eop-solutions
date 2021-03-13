@@ -176,3 +176,21 @@
 		\item $x \text{ divides } a \wedge x \text{ divides } b \Rightarrow x \text{ divides } \func{remainder\_nonnegative}(a, b)$
 	\end{itemize}
 \end{lemma}
+
+\begin{proof}
+	Let $a = nx$ and $b = mx$, then
+	\begin{align*}
+		a - b &= nx - mx\\
+		      &= (n - m)x,
+	\end{align*}
+	and since $a > b$, then $n > m$ and $x \text{ divides } (a - b)$.
+
+	Let $a = nx$, $b = mx$ and $a = qb + r$ where $r = \func{remainder\_nonnegative}(a, b)$ then
+	\begin{align*}
+		a &= qb + r\\
+		nx &= q(mx) + r\\
+		(n - qm)x &= r,
+	\end{align*}
+	that is, $x \text{ divides } r$.
+\end{proof}
+
