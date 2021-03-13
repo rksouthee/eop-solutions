@@ -134,3 +134,31 @@
 	The result of doubling a positive element of a halvable monoid $k$ times may be
 	halved $k$ times.
 \end{lemma}
+
+\begin{proof}
+	We'll first show that doubling a number $k$ times is equal to $2^ka = 2^{k-1}a + 2^{k-1}a$.
+	Using induction, we'll first prove the base case when $k = 1$.
+	\begin{align*}
+		2^1a &= 2^0a + 2^0a\\
+		     &= 1a + 1a\\
+		     &= a + a.
+	\end{align*}
+	Assume that $n=k$ holds, show $n = k + 1$
+	\begin{align*}
+		2^{k+1}a &= 2(2^ka)\\
+			 &= 2(2^{k-1}a + 2^{k-1}a)\\
+			 &= 2^ka + 2^ka.
+	\end{align*}
+	Now we want to show that we can halve $2^ka$ $k$ times. Using the definition of halvable
+	monoid we have
+	\begin{align*}
+		\func{half}(2^ka) &= \func{half}(2^{k-1}a + 2^{k-1}a)\\
+		&= 2^{k-1}a,
+	\end{align*}
+	until we have $k=1$ where we have
+	\begin{align*}
+		\func{half}(2a) &= \func{half}(a + a)\\
+		&= a.
+	\end{align*}
+	We can see that doubling a positive element $k$ times may then be halved $k$ times.
+\end{proof}
