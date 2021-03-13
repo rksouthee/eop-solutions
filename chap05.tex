@@ -15,3 +15,14 @@
 \begin{lemma}
 	$n^3$ is the multiplicative inverse modulo 5 of a positive integer $n \neq 0$.
 \end{lemma}
+
+\begin{proof}
+	Using Fermat's Little Theorem which states that if $p$ is prime, then for any integer $n$
+	\[ n^p \equiv n\ (\textrm{mod}\ p). \]
+	In our case $p = 5$, and since $n \neq 0$ we have
+	\begin{align*}
+		n^5 &\equiv n\ (\textrm{mod}\ 5)\\
+		n^4 &\equiv 1\ (\textrm{mod}\ 5)\\
+		nn^3 &\equiv 1\ (\textrm{mod}\ 5)
+	\end{align*}
+\end{proof}
