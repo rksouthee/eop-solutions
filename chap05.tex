@@ -51,3 +51,16 @@
 \begin{lemma}
 	In an ordered additive semigroup, $a < b \wedge c < d \Rightarrow a + c < b + d$.
 \end{lemma}
+
+\begin{proof}
+	Given $a < b$, then from the definition of ordered additive semigroup we have:
+	\[ a < b \Rightarrow a + c < b + c, \]
+	and similarly for $c < d$
+	\[ c < d \Rightarrow c + b < d + b. \]
+
+	\begin{align*}
+		a + c < b + c = c + b < d + b && \text{commutativity}\\
+		a + c < b + c < b + d && \text{commutativity}\\
+		a + c < b + d && \text{transitivity}
+	\end{align*}
+\end{proof}
