@@ -1807,6 +1807,15 @@ pair<I, J> count_if_n(I f, DistanceType(I) n, P p, J j)
     return pair<I, J>(f, j);
 }
 
+template <typename I, typename P>
+    requires(Readable(I) && Iterator(I) &&
+        UnaryPredicate(P) && ValueType(I) == Domain(P))
+pair<I, DistanceType(I)> count_if_n(I f, DistanceType(I) n, P p)
+{
+    // Precondition: $\property{readable\_weak\_range}(f, n)$
+    return count_if_n(f, n, p, DistanceType(I)(0));
+}
+
 template<typename I, typename P>
     requires(Readable(I) && Iterator(I) &&
         UnaryPredicate(P) && ValueType(I) == Domain(P))

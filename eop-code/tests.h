@@ -2195,6 +2195,10 @@ void test_ch_6()
             Assert(p.m0 == end(l) && p.m1 == Z(100) + Z(3));
         }
 
+        {
+            pair<I, N> p = count_if_n(begin(l), size(l), even<Z>);
+            Assert(p.m0 == end(l) && p.m1 == N(3));
+        }
 
         Assert(find_if(
             begin(l), end(l), lower_bound_predicate< less<Z> >(3, less<Z>())) != end(l));
