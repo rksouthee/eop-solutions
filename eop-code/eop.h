@@ -2082,7 +2082,6 @@ pair<I, ValueType(I)> reduce_n(I f, DistanceType(I) n)
     return reduce_n(f, n, plus<T>(), T(0));
 }
 
-
 template<typename I, typename P>
     requires(Readable(I) && Iterator(I) &&
         UnaryPredicate(P) && ValueType(I) == Domain(P))
