@@ -2205,6 +2205,15 @@ void test_ch_6()
         Assert(reduce(begin(lc), end(lc)) == Z(15));
 
         {
+            pair<I, Z> p = reduce_n(begin(l), size(l));
+            Assert(p.m0 == end(l) && p.m1 == Z(15));
+            p = reduce_n(begin(lb), size(lb));
+            Assert(p.m0 == end(lb) && p.m1 == Z(3));
+            p = reduce_n(begin(lc), size(lc));
+            Assert(p.m0 == end(lc) && p.m1 == Z(15));
+        }
+
+        {
             pair<accumulate< plus<Z> >, iterator_type< slist<Z> >::type> p =
                 for_each_n(begin(l), size(l),
                            accumulate< plus<Z> >(plus<Z>(), Z(0)));

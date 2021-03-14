@@ -2072,7 +2072,16 @@ pair<I, Domain(Op)> reduce_n_nonzeroes(I f, DistanceType(I) n,
     return pair<I, Domain(Op)>(f, x);
 }
 
-// \verb|reduce_n(f, n)|
+template<typename I>
+    requires(Readable(I) && Iterator(I) &&
+        AdditiveMonoid(ValueType(I)))
+pair<I, ValueType(I)> reduce_n(I f, DistanceType(I) n)
+{
+    // Precondition: $\property{readable\_weak\_range}(f, n)$
+    typedef ValueType(I) T;
+    return reduce_n(f, n, plus<T>(), T(0));
+}
+
 
 template<typename I, typename P>
     requires(Readable(I) && Iterator(I) &&
