@@ -2148,6 +2148,16 @@ void test_ch_6()
         Assert(count_not(begin(l), end(l), Z(2), Z(100)) == Z(100) + Z(5));
         Assert(count_not(begin(l), end(l), Z(2)) == Z(5));
 
+        {
+            pair<I, Z> p = count_n(begin(l), size(l), Z(2), Z(100));
+            Assert(p.m0 == end(l) && p.m1 == Z(100) + Z(1));
+        }
+
+        {
+            pair<I, N> p = count_n(begin(l), size(l), Z(2));
+            Assert(p.m0 == end(l) && p.m1 == N(1));
+        }
+
         Assert(reduce_nonempty(0, 50, plus<Z>(), identity<Z>()) == Z(49*50/2));
         Assert(reduce_nonempty(0, 1, plus<Z>(), identity<Z>()) == Z(0));
         Assert(reduce_nonempty(begin(l), end(l), plus<Z>()) == Z(15));

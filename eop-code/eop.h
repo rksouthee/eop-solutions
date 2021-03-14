@@ -1884,8 +1884,29 @@ pair<I, DistanceType(I)> count_if_n(I f, DistanceType(I) n, P p)
     return count_if_n(f, n, p, DistanceType(I)(0));
 }
 
-// \verb|count_n(f, n, x, j)|
-// \verb|count_n(f, n, x)|
+template <typename I, typename J>
+    requires(Readable(I) && Iterator(I) && Iterator(J))
+pair<I, J> count_n(I f, DistanceType(I) n,
+                   const ValueType(I)& x, J j)
+{
+    // Precondition: $\func{readable\_weak\_range}(f, n)$
+    while (!zero(n)) {
+        if (source(f) == x) j = successor(j);
+        n = predecessor(n);
+        f = successor(f);
+    }
+    return pair<I, J>(f, j);
+}
+
+template <typename I>
+    requires(Readable(I) && Iterator(I))
+pair<I, DistanceType(I)> count_n(I f, DistanceType(I) n,
+                                 const ValueType(I)& x)
+{
+    // Precondition: $\func{readable\_weak\_range}(f, n)$
+    return count_n(f, n, x, DistanceType(I)(0));
+}
+
 // \verb|count_not_n(f, n, x, j)|
 // \verb|count_not_n(f, n, x)|
 // \verb|count_if_not_n(f, n, p, j)|
