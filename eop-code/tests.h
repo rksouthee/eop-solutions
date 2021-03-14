@@ -2486,7 +2486,14 @@ void test_ch_6()
             Assert(find_backward_if_not(begin(ah), end(ah), zero<Z>) == end(ah));
             Assert(find_backward_if_not(begin(ah), end(ah), positive<Z>) == successor(begin(ah)));
         }
-
+        { // palindrome
+            Z h[] = {1, 4, 6, 4, 1};
+            array<Z> ah(counted_range<Z*>(h, sizeof(h)/sizeof(Z)));
+            Assert(palindrome(begin(ah), begin(ah)));
+            Assert(palindrome(begin(ah), successor(begin(ah))));
+            Assert(palindrome(begin(ah), end(ah)));
+            Assert(!palindrome(successor(begin(ah)), end(ah)));
+        }
      }
 
     int a[] = {0, 1, 2, 2, 4, 4, 5};

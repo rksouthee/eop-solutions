@@ -2471,6 +2471,18 @@ I find_backward_if_opt(I f, I l, P p)
 
 // Exercise 6.9: palindrome predicate
 
+template <typename I>
+    requires(Readable(I) && BidirectionalIterator(I))
+bool palindrome(I f, I l)
+{
+    while (true) {
+        if (f == l) return true;
+        l = predecessor(l);
+        if (l == f) return true;
+        if (source(f) != source(l)) return false;
+        f = successor(f);
+    }
+}
 
 template<typename I, typename P>
     requires(Readable(I) && BidirectionalIterator(I) &&
