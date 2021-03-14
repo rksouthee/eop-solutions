@@ -116,3 +116,12 @@
 	\verb|partition_point_n| returns the partition point of the $p$-partitioned range
 	$\llbracket f, n \rrparenthesis$.
 \end{lemma}
+
+\begin{lemma}
+	In an increasing range $[f, l)$, for any value $a$ of the value type of the range,
+	the range is partitioned by the following two predicates:
+	\begin{align*}
+		\func{lower\_bound}_a(x) &\Leftrightarrow \lnot r(x, a)\\
+		\func{upper\_bound}_a(x) &\Leftrightarrow r(a, x)
+	\end{align*}
+\end{lemma}
