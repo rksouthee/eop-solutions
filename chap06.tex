@@ -80,3 +80,12 @@
 	State the postcondition for \verb|find_mismatch|, and explain why the final values
 	of both iterators are returned.
 \end{exercise}
+
+\begin{solution}
+	The postcondition for \verb|find_mismatch| is
+	\[ f0 = l0 \vee f1 = l1 \vee \lnot r(\func{source}(f0), \func{source}(f1). \]
+	Both iterators are returned since it allows the client to find the next mismatch.
+	Another reason for returning both iterators is that it might not be possible
+	to get back to the values returned since they we only require the \verb|Iterator|
+	concept.
+\end{solution}
