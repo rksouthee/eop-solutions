@@ -2200,6 +2200,13 @@ void test_ch_6()
             Assert(p.m0 == end(l) && p.m1 == N(3));
         }
 
+        {
+            pair<int, Z> p = reduce_n_nonempty(0, 50, plus<Z>(), identity<Z>());
+            Assert(p.m0 == 50 && p.m1 == Z(49*50/2));
+            p = reduce_n_nonempty(0, 1, plus<Z>(), identity<Z>());
+            Assert(p.m0 == 1 && p.m1 == Z(0));
+        }
+
         Assert(find_if(
             begin(l), end(l), lower_bound_predicate< less<Z> >(3, less<Z>())) != end(l));
         Assert(find_if_unguarded(
