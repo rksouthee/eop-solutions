@@ -1541,6 +1541,25 @@ J count_if(I f, I l, P p, J j)
 
 // Exercise 6.2: implement count_if using for_each
 
+template<typename P, typename J>
+    requires(UnaryPredicate(P) && Iterator(J))
+struct for_each_counter {
+   typedef Domain(P) T;
+   P p;
+   J j;
+   for_each_counter(P p, J j) : p(p), j(j) { }
+   void operator()(const T& x) { if (p(x)) j = successor(j); }
+};
+
+template<typename I, typename P, typename J>
+    requires(Readable(I) && Iterator(I) &&
+        UnaryPredicate(P) && Iterator(J) &&
+        ValueType(I) == Domain(P))
+J count_if_ex_6_2(I f, I l, P p, J j)
+{
+    // Precondition: $\func{readable\_bounded\_range}(f, l)$
+   return for_each(f, l, for_each_counter<P, J>(p, j)).j;
+}
 
 template<typename I, typename P>
     requires(Readable(I) && Iterator(I) &&

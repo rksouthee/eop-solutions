@@ -2130,6 +2130,7 @@ void test_ch_6()
         Assert(not_all(Z(0), Z(100), odd<Z>));
 
         Assert(count_if(begin(l), end(l), even<Z>, Z(100)) == Z(100) + Z(3));
+        Assert(count_if_ex_6_2(begin(l), end(l), even<Z>, Z(100)) == Z(100) + Z(3));
         Assert(count_if(begin(l), end(l), even<Z>) == Z(3));
         Assert(count_if_not(begin(l), end(l), positive<Z>, Z(-1)) == Z(-1) + Z(1));
         Assert(count_if_not(begin(l), end(l), positive<Z>) == Z(1));
