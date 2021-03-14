@@ -2348,6 +2348,20 @@ void test_ch_6()
             Assert(p1.m0 == begin(l) + N(4) && p1.m1 == begin(ld) + N(4) && p1.m2 == N(2));
         }
         {
+            triple<I, N, Z> p0 = find_mismatch_n0(
+                begin(l), size(l), Z(0), Z(6), equal<Z>());
+            Assert(p0.m0 == end(l) && p0.m1 == N(0) && p0.m2 == Z(6));
+            p0 = find_mismatch_n0(begin(l), size(l), Z(0), Z(7), equal<Z>());
+            Assert(p0.m0 == end(l) && p0.m1 == N(0) && p0.m2 == Z(6));
+            p0 = find_mismatch_n0(begin(l), size(l), Z(0), Z(4), equal<Z>());
+            Assert(p0.m0 == begin(l) + N(4) && p0.m1 == size(l) - N(4) && p0.m2 == Z(4));
+            Z d[] = {0, 1, 2, 3, -4, 5};
+            slist<Z> ld(counted_range<Z*>(d, sizeof(d)/sizeof(Z)));
+            triple<I, N, I> p1 = find_mismatch_n0(
+                begin(l), size(l), begin(ld), end(ld), equal<Z>());
+            Assert(p1.m0 == begin(l) + N(4) && p1.m1 == size(l) - N(4) && p1.m2 == begin(ld) + N(4));
+        }
+        {
             Assert(find_adjacent_mismatch(begin(lb), end(lb), equal<Z>()) == end(lb));
             Z e[] = {0, 0, 0, 1, 0, 0};
             slist<Z> le(counted_range<Z*>(e, sizeof(e)/sizeof(Z)));

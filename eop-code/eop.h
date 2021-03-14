@@ -2120,6 +2120,8 @@ pair<I0, I1> find_mismatch(I0 f0, I0 l0, I1 f1, I1 l1, R r)
     return pair<I0, I1>(f0, f1);
 }
 
+// Exercise 6.5
+
 template <typename I0, typename I1, typename R, typename N>
     requires(Readable(I0) && Iterator(I0) &&
         Readable(I1) && Iterator(I1) && Relation(R) &&
@@ -2135,6 +2137,25 @@ triple<I0, I1, N> find_mismatch(I0 f0, I1 f1, N n, R r)
         f1 = successor(f1);
     }
     return triple<I0, I1, N>(f0, f1, n);
+}
+
+template <typename I0, typename I1, typename R>
+    requires(Readable(I0) && Iterator(I0) &&
+        Readable(I1) && Iterator(I1) && Relation(R) &&
+        ValueType(I0) == ValueType(I1) &&
+        ValueType(I0) == Domain(R))
+triple<I0, DistanceType(I0), I1>
+find_mismatch_n0(I0 f0, DistanceType(I0) n0,
+                 I1 f1, I1 l1, R r)
+{
+    // Precondition: $\func{readable\_weak\_range}(f0, n0)$
+    // Precondition: $\func{readable\_bounded\_range}(f1, l1)$
+    while (!zero(n0) && f1 != l1 && r(source(f0), source(f1))) {
+        n0 = predecessor(n0);
+        f0 = successor(f0);
+        f1 = successor(f1);
+    }
+    return triple<I0, DistanceType(I0), I1>(f0, n0, f1);
 }
 
 template<typename I, typename R>
