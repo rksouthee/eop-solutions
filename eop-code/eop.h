@@ -1930,8 +1930,30 @@ pair<I, DistanceType(I)> count_not_n(I f, DistanceType(I) n,
     return count_not_n(f, n, x, DistanceType(I)(0));
 }
 
-// \verb|count_if_not_n(f, n, p, j)|
-// \verb|count_if_not_n(f, n, p)|
+template <typename I, typename P, typename J>
+    requires(Readable(I) && Iterator(I) &&
+        UnaryPredicate(P) && Iterator(J) &&
+        ValueType(I) == Domain(P))
+pair<I, J> count_if_not_n(I f, DistanceType(I) n, P p, J j)
+{
+    // Precondition: $\func{readable\_weak\_range}(f, n)$
+    while (!zero(n)) {
+        if (!p(source(f))) j = successor(j);
+        n = predecessor(n);
+        f = successor(f);
+    }
+    return pair<I, J>(f, j);
+}
+
+template <typename I, typename P>
+    requires(Readable(I) && Iterator(I) &&
+        UnaryPredicate(P) &&
+        ValueType(I) == Domain(P))
+pair<I, DistanceType(I)> count_if_not_n(I f, DistanceType(I) n, P p)
+{
+    // Precondition: $\func{readable\_weak\_range}(f, n)$
+    return count_if_not_n(f, n, p, DistanceType(I)(0));
+}
 
 template <typename I, typename Op, typename F>
     requires(Iterator(I) && BinaryOperation(Op) &&
