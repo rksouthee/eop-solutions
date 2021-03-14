@@ -2207,6 +2207,13 @@ void test_ch_6()
             Assert(p.m0 == 1 && p.m1 == Z(0));
         }
 
+        {
+            pair<I, Z> p = reduce_n_nonempty(begin(l), size(l), plus<Z>());
+            Assert(p.m0 == end(l) && p.m1 == Z(15));
+            p = reduce_n_nonempty(begin(l), N(1), plus<Z>());
+            Assert(p.m0 == successor(begin(l)) && p.m1 == Z(0));
+        }
+
         Assert(find_if(
             begin(l), end(l), lower_bound_predicate< less<Z> >(3, less<Z>())) != end(l));
         Assert(find_if_unguarded(

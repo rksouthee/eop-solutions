@@ -1838,6 +1838,25 @@ pair<I, Domain(Op)> reduce_n_nonempty(I f,
     return pair<I, Domain(Op)>(f, r);
 }
 
+template<typename I, typename Op>
+    requires(Readable(I) && Iterator(I) && BinaryOperation(Op) &&
+        ValueType(I) == Domain(Op))
+pair<I, Domain(Op)>
+reduce_n_nonempty(I f, DistanceType(I) n, Op op)
+{
+    // Precondition: $\property{readable\_weak\_range}(f, n) \wedge n \neq 0$
+    // Precondition: $\property{partially\_associative}(op)$
+    Domain(Op) r = source(f);
+    n = predecessor(n);
+    f = successor(f);
+    while (!zero(n)) {
+        r = op(r, source(f));
+        n = predecessor(n);
+        f = successor(f);
+    }
+    return pair<I, Domain(Op)>(f, r);
+}
+
 template<typename I, typename P>
     requires(Readable(I) && Iterator(I) &&
         UnaryPredicate(P) && ValueType(I) == Domain(P))
