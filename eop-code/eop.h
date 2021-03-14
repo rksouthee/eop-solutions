@@ -1779,6 +1779,8 @@ pair<I, DistanceType(I)> find_n(I f, DistanceType(I) n,
 // Exercise 6.3: implement variations taking a weak range instead of a bounded range
 // of all the versions of find, quantifiers, count, and reduce
 
+// \verb|find_not_n|
+
 template <typename I, typename P>
    requires(Readable(I) && Iterator(I) &&
        UnaryPredicate(P) && ValueType(I) == Domain(P))
@@ -1791,6 +1793,9 @@ pair<I, DistanceType(I)> find_if_n(I f, DistanceType(I) n, P p)
     }
     return pair<I, DistanceType(I)>(f, n);
 }
+
+// \verb|find_if_not_n|
+// \verb|all_n, none_n, not_all_n, some_n|
 
 template <typename I, typename P, typename J>
    requires(Readable(I) && Iterator(I) &&
@@ -1815,6 +1820,13 @@ pair<I, DistanceType(I)> count_if_n(I f, DistanceType(I) n, P p)
     // Precondition: $\property{readable\_weak\_range}(f, n)$
     return count_if_n(f, n, p, DistanceType(I)(0));
 }
+
+// \verb|count_n(f, n, x, j)|
+// \verb|count_n(f, n, x)|
+// \verb|count_not_n(f, n, x, j)|
+// \verb|count_not_n(f, n, x)|
+// \verb|count_if_not_n(f, n, p, j)|
+// \verb|count_if_not_n(f, n, p)|
 
 template <typename I, typename Op, typename F>
     requires(Iterator(I) && BinaryOperation(Op) &&
@@ -1908,6 +1920,32 @@ pair<I, Domain(Op)> reduce_n_nonzeroes(I f, DistanceType(I) n,
     }
     return pair<I, Domain(Op)>(f, x);
 }
+
+template<typename I, typename Op>
+    requires(ReadableIterator(I) && BinaryOperation(Op) &&
+        ValueType(I) == Domain(Op))
+pair<I, Domain(Op)> reduce_n_nonzeroes(I f, DistanceType(I) n,
+                                       Op op, const Domain(Op)& z)
+{
+    // Precondition: $\property{readable\_weak\_range}(f, n)$
+    // Precondition: $\property{partially\_associative}(op)$
+    Domain(Op) x;
+    do {
+        if (zero(n)) return pair<I, Domain(Op)>(f, z);
+        x = source(f);
+        n = predecessor(n);
+        f = successor(f);
+    } while (x == z);
+    while (!zero(n)) {
+        Domain(Op) y = source(f);
+        if (y != z) x = op(x, y);
+        n = predecessor(n);
+        f = successor(f);
+    }
+    return pair<I, Domain(Op)>(f, x);
+}
+
+// \verb|reduce_n(f, n)|
 
 template<typename I, typename P>
     requires(Readable(I) && Iterator(I) &&
