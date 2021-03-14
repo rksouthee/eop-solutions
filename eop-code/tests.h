@@ -2129,6 +2129,15 @@ void test_ch_6()
         Assert(some(Z(0), Z(100), odd<Z>));
         Assert(not_all(Z(0), Z(100), odd<Z>));
 
+        Assert(all_n(begin(lb), size(lb), positive<Z>));
+        Assert(none_n(begin(l), size(l), negative<Z>));
+        Assert(some_n(begin(l), size(l), positive<Z>));
+        Assert(not_all_n(begin(l), size(l), positive<Z>));
+        Assert(all_n(Z(1), Z(99), positive<Z>));
+        Assert(none_n(Z(1), Z(99), negative<Z>));
+        Assert(some_n(Z(0), Z(100), odd<Z>));
+        Assert(not_all_n(Z(0), Z(100), odd<Z>));
+
         Assert(count_if(begin(l), end(l), even<Z>, Z(100)) == Z(100) + Z(3));
         Assert(count_if_ex_6_2(begin(l), end(l), even<Z>, Z(100)) == Z(100) + Z(3));
         Assert(count_if(begin(l), end(l), even<Z>) == Z(3));

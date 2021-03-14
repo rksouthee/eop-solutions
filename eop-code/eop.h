@@ -1820,7 +1820,45 @@ find_if_not_n(I f, DistanceType(I) n, P p)
     return pair<I, DistanceType(I)>(f, n);
 }
 
-// \verb|all_n, none_n, not_all_n, some_n|
+template <typename I, typename P>
+    requires(Readable(I) && Iterator(I) &&
+        UnaryPredicate(P) &&
+        ValueType(I) == Domain(P))
+bool all_n(I f, DistanceType(I) n, P p)
+{
+    // Precondition: $\func{readable\_weak\_range}(f, n)$
+    return zero(find_if_not_n(f, n, p).m1);
+}
+
+template <typename I, typename P>
+    requires(Readable(I) && Iterator(I) &&
+        UnaryPredicate(P) &&
+        ValueType(I) == Domain(P))
+bool none_n(I f, DistanceType(I) n, P p)
+{
+    // Precondition: $\func{readable\_weak\_range}(f, n)$
+    return zero(find_if_n(f, n, p).m1);
+}
+
+template <typename I, typename P>
+    requires(Readable(I) && Iterator(I) &&
+        UnaryPredicate(P) &&
+        ValueType(I) == Domain(P))
+bool not_all_n(I f, DistanceType(I) n, P p)
+{
+    // Precondition: $\func{readable\_weak\_range}(f, n)$
+    return !all_n(f, n, p);
+}
+
+template <typename I, typename P>
+    requires(Readable(I) && Iterator(I) &&
+        UnaryPredicate(P) &&
+        ValueType(I) == Domain(P))
+bool some_n(I f, DistanceType(I) n, P p)
+{
+    // Precondition: $\func{readable\_weak\_range}(f, n)$
+    return !none_n(f, n, p);
+}
 
 template <typename I, typename P, typename J>
    requires(Readable(I) && Iterator(I) &&
