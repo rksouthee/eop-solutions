@@ -103,3 +103,11 @@
 \end{exercise}
 
 \lstinputlisting[language=c++, firstline=2239, lastline=2248]{eop-code/eop.h}
+
+\begin{lemma}
+	If $p$ is a predicate and $[f, l)$ is a $p$-partitioned range:
+	\begin{align*}
+		(\forall m \in [f, l)\ \lnot p(\func{source}(m)) &\Rightarrow (\forall j \in [f, m])\ \lnot p(\func{source}(j))\\
+		(\forall m \in [f, l)\ p(\func{source}(m)) &\Rightarrow (\forall j \in [m, l))\ p(\func{source}(j))
+	\end{align*}
+\end{lemma}
