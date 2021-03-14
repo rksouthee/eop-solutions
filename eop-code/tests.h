@@ -2432,6 +2432,22 @@ void test_ch_6()
             Assert(!partitioned(begin(lg), end(lg), even<Z>));
         }
 
+        Assert(partitioned_n(begin(l), N(0), negative<Z>));
+        Assert(partitioned_n(begin(l), size(l), negative<Z>));
+        Assert(!partitioned_n(begin(l), size(l), zero<Z>));
+        Assert(partitioned_n(begin(lb), size(lb), even<Z>));
+        Assert(partitioned_n(begin(lb), size(lb), odd<Z>));
+        Assert(partitioned_n(
+            begin(l), size(l), lower_bound_predicate< less<Z> >(3, less<Z>())));
+        Assert(partitioned_n(
+            begin(l), size(l), upper_bound_predicate< less<Z> >(3, less<Z>())));
+        {
+            Z g[] = {0, 2, 4, 1, 3, 5};
+            slist<Z> lg(counted_range<Z*>(g, sizeof(g)/sizeof(Z)));
+            Assert(partitioned_n(begin(lg), size(lg), odd<Z>));
+            Assert(!partitioned_n(begin(lg), size(lg), even<Z>));
+        }
+
         Assert(partition_point_n(begin(lb), size(lb), zero<Z>) == end(lb));
         Assert(partition_point_n(begin(lb), size(lb), odd<Z>) == begin(lb));
         Assert(partition_point_n(

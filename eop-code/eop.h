@@ -2236,6 +2236,17 @@ bool partitioned(I f, I l, P p)
 
 // Exercise 6.6: partitioned_n
 
+template <typename I, typename P>
+    requires(Readable(I) && Iterator(I) &&
+        UnaryPredicate(P) && ValueType(I) == Domain(P))
+bool partitioned_n(I f, DistanceType(I) n, P p)
+{
+    // Precondition: $\func{readable\_weak\_range}(f, n)$
+    typedef DistanceType(I) N;
+    pair<I, N> q = find_if_n(f, n, p);
+    return zero(find_if_not_n(q.m0, q.m1, p).m1);
+}
+
 
 template<typename I, typename R>
     requires(Readable(I) && ForwardIterator(I) &&
