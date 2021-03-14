@@ -9,6 +9,7 @@ add_latex_document(eop_sln.tex
 	chap03.tex eop-code/integers.h
 	chap04.tex code/ex_4_1.cpp
 	chap05.tex
+	chap06.tex
 	)
 
 # TODO: Add the header files
