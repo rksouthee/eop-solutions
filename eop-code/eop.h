@@ -2158,6 +2158,25 @@ find_mismatch_n0(I0 f0, DistanceType(I0) n0,
     return triple<I0, DistanceType(I0), I1>(f0, n0, f1);
 }
 
+template <typename I0, typename I1, typename R>
+    requires(Readable(I0) && Iterator(I0) &&
+        Readable(I1) && Iterator(I1) && Relation(R) &&
+        ValueType(I0) == ValueType(I1) &&
+        ValueType(I0) == Domain(R))
+triple<I0, I1, DistanceType(I1)>
+find_mismatch_n1(I0 f0, I0 l0,
+                 I1 f1, DistanceType(I1) n1, R r)
+{
+    // Precondition: $\func{readable\_bounded\_range}(f0, l0)$
+    // Precondition: $\func{readable\_weak\_range}(f1, n1)$
+    while (f0 != l0 && !zero(n1) && r(source(f0), source(f1))) {
+        f0 = successor(f0);
+        n1 = predecessor(n1);
+        f1 = successor(f1);
+    }
+    return triple<I0, I1, DistanceType(I1)>(f0, f1, n1);
+}
+
 template<typename I, typename R>
     requires(Readable(I) && Iterator(I) &&
         Relation(R) && ValueType(I) == Domain(R))
