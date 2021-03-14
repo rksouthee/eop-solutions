@@ -1805,7 +1805,21 @@ pair<I, DistanceType(I)> find_if_n(I f, DistanceType(I) n, P p)
     return pair<I, DistanceType(I)>(f, n);
 }
 
-// \verb|find_if_not_n|
+template <typename I, typename P>
+    requires(Readable(I) && Iterator(I) &&
+        UnaryPredicate(P) &&
+        ValueType(I) == Domain(P))
+pair<I, DistanceType(I)>
+find_if_not_n(I f, DistanceType(I) n, P p)
+{
+    // Precondition: $\func{readable\_weak\_range}(f, n)$
+    while (!zero(n) && p(source(f))) {
+        n = predecessor(n);
+        f = successor(f);
+    }
+    return pair<I, DistanceType(I)>(f, n);
+}
+
 // \verb|all_n, none_n, not_all_n, some_n|
 
 template <typename I, typename P, typename J>

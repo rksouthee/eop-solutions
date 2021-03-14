@@ -2197,6 +2197,13 @@ void test_ch_6()
         }
 
         {
+            pair<I, N> p = find_if_not_n(begin(lb), size(lb), positive<Z>);
+            Assert(p.m0 == end(lb) && p.m1 == N(0));
+            p = find_if_not_n(begin(l), size(l), positive<Z>);
+            Assert(p.m0 == begin(l) && p.m1 == size(l));
+        }
+
+        {
             pair<iterator_type< slist<Z> >::type, Z> p =
                 count_if_n(begin(l), size(l), even<Z>, Z(100));
             Assert(p.m0 == end(l) && p.m1 == Z(100) + Z(3));
