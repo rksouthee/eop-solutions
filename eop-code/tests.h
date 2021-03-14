@@ -2181,6 +2181,13 @@ void test_ch_6()
         }
 
         {
+            pair<I, N> p = find_not_n(begin(lb), size(lb), Z(1));
+            Assert(p.m0 == end(lb) && p.m1 == N(0));
+            p = find_not_n(begin(lb), size(lb), Z(0));
+            Assert(p.m0 == begin(lb) && p.m1 == size(lb));
+        }
+
+        {
             pair<iterator_type< slist<Z> >::type, N> p =
                 find_if_n(begin(l), size(l), negative<Z>);
             Assert(p.m0 == end(l) && p.m1 == N(0));
