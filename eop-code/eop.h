@@ -1792,6 +1792,21 @@ pair<I, DistanceType(I)> find_if_n(I f, DistanceType(I) n, P p)
     return pair<I, DistanceType(I)>(f, n);
 }
 
+template <typename I, typename P, typename J>
+   requires(Readable(I) && Iterator(I) &&
+       UnaryPredicate(P) && Iterator(J) &&
+       ValueType(I) == Domain(P))
+pair<I, J> count_if_n(I f, DistanceType(I) n, P p, J j)
+{
+    // Precondition: $\property{readable\_weak\_range}(f, n)$
+    while (!zero(n)) {
+        if (p(source(f))) j = successor(j);
+        n = predecessor(n);
+        f = successor(f);
+    }
+    return pair<I, J>(f, j);
+}
+
 template<typename I, typename P>
     requires(Readable(I) && Iterator(I) &&
         UnaryPredicate(P) && ValueType(I) == Domain(P))

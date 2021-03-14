@@ -2189,6 +2189,12 @@ void test_ch_6()
             Assert(p.m0 == begin(l) + N(3) && p.m1 == size(l) - N(3));
         }
 
+        {
+            pair<iterator_type< slist<Z> >::type, Z> p =
+                count_if_n(begin(l), size(l), even<Z>, Z(100));
+            Assert(p.m0 == end(l) && p.m1 == Z(100) + Z(3));
+        }
+
 
         Assert(find_if(
             begin(l), end(l), lower_bound_predicate< less<Z> >(3, less<Z>())) != end(l));
