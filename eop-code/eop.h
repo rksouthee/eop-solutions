@@ -1883,6 +1883,32 @@ reduce_n(I f, DistanceType(I) n, Op op, const Domain(Op)& z)
     return reduce_n_nonempty(f, n, op);
 }
 
+template<typename I, typename Op, typename F>
+    requires(Iterator(I) && BinaryOperation(Op) &&
+        UnaryFunction(F) &&
+        I == Domain(F) && Codomain(F) == Domain(Op))
+pair<I, Domain(Op)> reduce_n_nonzeroes(I f, DistanceType(I) n,
+                                       Op op, F fun, const Domain(Op)& z)
+{
+    // Precondition: $\property{weak\_range}(f, n)$
+    // Precondition: $\property{partially\_associative}(op)$
+    // Precondition: $(\forall x \in \llbracket f, n \rrparenthesis) fun(x)$ is defined
+    Domain(Op) x;
+    do {
+        if (zero(n)) return pair<I, Domain(Op)>(f, z);
+        x = fun(f);
+        n = predecessor(n);
+        f = successor(f);
+    } while (x == z);
+    while (!zero(n)) {
+        Domain(Op) y = fun(f);
+        if (y != z) x = op(x, y);
+        n = predecessor(n);
+        f = successor(f);
+    }
+    return pair<I, Domain(Op)>(f, x);
+}
+
 template<typename I, typename P>
     requires(Readable(I) && Iterator(I) &&
         UnaryPredicate(P) && ValueType(I) == Domain(P))
