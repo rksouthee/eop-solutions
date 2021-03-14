@@ -2180,6 +2180,15 @@ void test_ch_6()
             Assert(p.m0 == begin(l) + N(5) && p.m1 == N(1));
         }
 
+        {
+            pair<iterator_type< slist<Z> >::type, N> p =
+                find_if_n(begin(l), size(l), negative<Z>);
+            Assert(p.m0 == end(l) && p.m1 == N(0));
+            p = find_if_n(begin(l), size(l),
+                          lower_bound_predicate< less<Z> >(3, less<Z>()));
+            Assert(p.m0 == begin(l) + N(3) && p.m1 == size(l) - N(3));
+        }
+
 
         Assert(find_if(
             begin(l), end(l), lower_bound_predicate< less<Z> >(3, less<Z>())) != end(l));

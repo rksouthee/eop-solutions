@@ -1779,6 +1779,18 @@ pair<I, DistanceType(I)> find_n(I f, DistanceType(I) n,
 // Exercise 6.3: implement variations taking a weak range instead of a bounded range
 // of all the versions of find, quantifiers, count, and reduce
 
+template <typename I, typename P>
+   requires(Readable(I) && Iterator(I) &&
+       UnaryPredicate(P) && ValueType(I) == Domain(P))
+pair<I, DistanceType(I)> find_if_n(I f, DistanceType(I) n, P p)
+{
+    // Precondition: $\property{readable\_weak\_range}(f, n)$
+    while (!zero(n) && !p(source(f))) {
+        n = predecessor(n);
+        f = successor(f);
+    }
+    return pair<I, DistanceType(I)>(f, n);
+}
 
 template<typename I, typename P>
     requires(Readable(I) && Iterator(I) &&
