@@ -2341,6 +2341,82 @@ I upper_bound_n(I f, DistanceType(I) n,
 
 // Exercise 6.7: equal_range
 
+template <typename F>
+    requires(UnaryFunction(F) && Codomain(F) == int)
+struct three_way_predicate {
+    F fun;
+    int n;
+
+    three_way_predicate(F fun, int n) : fun(fun), n(n) { }
+    bool operator()(const Domain(F)& x) { return n == fun(x); }
+};
+
+template <typename I, typename F>
+    requires(Readable(I) && ForwardIterator(I) &&
+        UnaryFunction(F) && ValueType(I) == Domain(F) &&
+        Codomain(F) == int)
+pair<I, I> partition_point_3way_n(I f, DistanceType(I) n, F fun)
+{
+    // Precondition: $\func{readable\_counted\_range}(f, n) \wedge \func{partitioned\_3way\_n}(f, n, fun)$
+    typedef three_way_predicate<F> P;
+    while (!zero(n)) {
+        DistanceType(I) h = half_nonnegative(n);
+        I m = f + h;
+        switch (fun(source(m))) {
+        case -1:
+            n = n - successor(h); f = successor(m);
+            break;
+        case 0: {
+            I l = partition_point_n(f, h, P(fun, 0));
+            I u = partition_point_n(successor(m),
+                                    n - successor(h),
+                                    P(fun, 1));
+            return pair<I, I>(l, u);
+        } break;
+        case 1:
+            n = h;
+            break;
+        }
+    }
+
+    return pair<I, I>(f, f);
+}
+
+template <typename R>
+    requires(Relation(R))
+struct equal_range_function {
+    typedef Domain(R) T;
+    const T& a;
+    R r;
+    equal_range_function(const T& a, R r) : a(a), r(r) { }
+    int operator()(const T& x)
+    {
+        if (r(x, a)) return -1;
+        if (r(a, x)) return 1;
+        return 0;
+    }
+};
+
+template <typename R>
+struct input_type<equal_range_function<R>, 0> {
+    typedef Domain(R) type;
+};
+
+template <typename R>
+struct codomain_type<equal_range_function<R> > {
+    typedef int type;
+};
+
+template <typename I, typename R>
+    requires(Readable(I) && ForwardIterator(I) &&
+        Relation(R) && ValueType(I) == Domain(R))
+pair<I, I> equal_range_n(I f, DistanceType(I) n,
+                         const ValueType(I)& a, R r)
+{
+    // Precondition: $\func{weak\_ordering}(r) \wedge \func{increasing\_counted\_range}(f, n, r)$
+    equal_range_function<R> fun(a, r);
+    return partition_point_3way_n(f, n, fun);
+}
 
 template<typename I>
     requires(BidirectionalIterator(I))

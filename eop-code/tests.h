@@ -2499,6 +2499,14 @@ void test_ch_6()
     m = upper_bound_n(f, n, 3, less<int>()); Assert(m == a + 4);
 
     {
+        pair<pointer(int), pointer(int)> p;
+        p = equal_range_n(f, n, 2, less<int>());
+        Assert(p.m0 == a + 2 && p.m1 == a + 4);
+        p = equal_range_n(f, n, 3, less<int>());
+        Assert(p.m0 == a + 4 && p.m1 == a + 4);
+    }
+
+    {
         const int N = 9;
         int s0 = reduce(square_of_i<int>(0), square_of_i<int>(N + 1), plus<int>(), 0);
         int s1 = reduce_balanced(
