@@ -2466,7 +2466,9 @@ void test_ch_6()
             Assert(end(ah) - 1 == begin(ah) + (size(ah) - 1));
 
             Assert(find_backward_if(begin(ah), end(ah), zero<Z>) == successor(begin(ah)));
+            Assert(find_backward_if_opt(begin(ah), end(ah), zero<Z>) == successor(begin(ah)));
             Assert(find_backward_if(begin(ah), end(ah), negative<Z>) == begin(ah));
+            Assert(find_backward_if_opt(begin(ah), end(ah), negative<Z>) == begin(ah));
             Assert(find_backward_if_unguarded(end(ah), zero<Z>) == begin(ah));
 
             Assert(find_backward_if_not(begin(ah), end(ah), zero<Z>) == end(ah));

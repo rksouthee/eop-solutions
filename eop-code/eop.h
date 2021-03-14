@@ -2454,6 +2454,20 @@ I find_backward_if_not(I f, I l, P p) {
 
 // Exercise 6.8: optimized find_backward_if
 
+template <typename I, typename P>
+    requires(Readable(I) && BidirectionalIterator(I) &&
+        UnaryPredicate(P) && ValueType(I) == Domain(P))
+I find_backward_if_opt(I f, I l, P p)
+{
+    // Precondition: $(f, l] \text{ is a readable bounded half-open on left range}$
+    while (l != f) {
+        l = predecessor(l);
+        if (p(source(l)))
+            return successor(l);
+    }
+    return l;
+}
+
 
 // Exercise 6.9: palindrome predicate
 
