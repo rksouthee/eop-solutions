@@ -10,6 +10,7 @@ add_latex_document(eop_sln.tex
 	chap04.tex code/ex_4_1.cpp
 	chap05.tex
 	chap06.tex
+	chap07.tex
 	)
 
 # TODO: Add the header files
