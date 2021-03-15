@@ -35,3 +35,8 @@
 	If a call $\func{combine\_linked\_nonempty}(f0, l0, l1, r, s)$ returns $(h, t, l)$, $h$ equals $f0$ or $f1$,
 	and, independently, $l$ equals $l0$ or $l1$.
 \end{lemma}
+
+\begin{proof}
+	At the start of the function, $h$ is either set to $f0$ or $f1$ and is not set again. The function
+	has only two exit points and in one case $l$ equals $l0$ and in the other case $l$ equals $l1$.
+\end{proof}
