@@ -46,3 +46,10 @@
 	$f1 \neq l1$; when state $s3$ is reached, $t$ is from the original range $[f1, l1)$,
 	$\func{successor}(t) = l1$, and $f0 \neq l0$.
 \end{lemma}
+
+\begin{proof}
+	State $s2$ is only reached from state $s0$ when $f0 = l0$. There are three cases where we reach state
+	$s0$. In two of the cases we call $\func{advance\_tail}(t, f0)$ before going to state $s0$ and in the other
+	case we call $\func{link\_to\_tail}(t, f0$. In each case $t$ points to $f0$ and then $f0$ is advanced. Since
+	we just assigned $t$ to $f0$ before advancing we have $\func{successor}(t) = l0$.
+\end{proof}
