@@ -72,3 +72,12 @@
 	Explain why, in \verb|lexicographical_compare|, the third and fourth \verb|if| statements could be
 	interchanged, but the first and second cannot.
 \end{exercise}
+
+\begin{solution}
+	We can interchange the third and fourth statements because of the weak trichotomy law, both statements
+	cannot be true and so the order we check them does not affect correctness. The first and second lines
+	cannot be interchanged because they are independent, and if we have exhausted the second range $[f1, l1)$
+	then we know that the first range $[f0, l0)$ cannot come before the second range in a lexicographical
+	ordering. If we have ranges that are equivalent and we interchange the first and second statements we would
+	then consider the first range to come before the second range.
+\end{solution}
