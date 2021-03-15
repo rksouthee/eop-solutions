@@ -13,3 +13,12 @@
 	otherwise, if $\func{max}(l, r) = r$ we have
 	\[ r \leq l + r. \]
 \end{proof}
+
+\begin{lemma}
+	If $x$ and $y$ are bidirectional bifurcate coordinates,
+	\begin{align*}
+		\func{left\_successor}(x) = \func{left\_successor}(y) &\Rightarrow x = y\\
+		\func{left\_successor}(x) = \func{right\_successor}(y) &\Rightarrow x = y\\
+		\func{right\_successor}(x) = \func{right\_successor}(y) &\Rightarrow x = y
+	\end{align*}
+\end{lemma}
