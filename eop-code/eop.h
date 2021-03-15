@@ -3261,7 +3261,19 @@ s3: set_link(t, f0); return T(h, t, l0);
 }
 
 // Exercise 8.2: combine_linked
-
+template <typename I, typename S, typename R>
+    requires(ForwardLinker(S) && I == IteratorType(S) &&
+        PseudoRelation(R) && I == Domain(R))
+triple<I, I, I>
+combine_linked(I f0, I l0, I f1, I l1, R r, S set_link)
+{
+    // Precondition: $\func{bounded\_range}(f0, l0) \wedge \func{bounded\_range}(f1, l1)$
+    // Precondition: $\func{disjoint}(f0, l0, f1, l1)$
+    typedef triple<I, I, I> T;
+    if (f1 == l1) return T(f0, f0, l0);
+    if (f0 == l0) return T(f1, f1, l1);
+    return combine_linked_nonempty(f0, l0, f1, l1, r, set_link);
+}
 
 template<typename I, typename S>
     requires(ForwardLinker(S) && I == IteratorType(S))
