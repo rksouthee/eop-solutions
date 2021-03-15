@@ -22,3 +22,11 @@
 		\func{right\_successor}(x) = \func{right\_successor}(y) &\Rightarrow x = y
 	\end{align*}
 \end{lemma}
+
+\begin{proof}
+	Using the regularity of \verb|predecessor| we have
+	\begin{align*}
+		\func{predecessor}(\func{left\_successor}(x)) &= \func{predecessor}(\func{right\_successor}(x)) = x\\
+		\func{predecessor}(\func{left\_successor}(y)) &= \func{predecessor}(\func{right\_successor}(y)) = y
+	\end{align*}
+\end{proof}
