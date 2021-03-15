@@ -85,3 +85,8 @@
 \begin{exercise}
 	Explain why we did not implement \verb|lexicographical_compare| by using \verb|find_mismatch|.
 \end{exercise}
+
+\begin{solution}
+	Using \verb|find_mismatch| only finds if and where the ranges differ, and so would require more
+	iterators comparisons and comparisons for \verb|lexicographical_compare| to determine the ordering.
+\end{solution}
