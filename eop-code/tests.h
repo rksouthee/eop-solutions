@@ -2797,6 +2797,11 @@ void algorithms_bidirectional_bifurcate_coordinates()
     T_X x('a', x2_345_678, T_X('i', T_X('j', T_X('k'), T_X('l')),
                                     T_X('m', T_X('n'), T_X('o'))));
 
+    // Exercise 7.3
+    // TODO Add more tests when we get to mutable coordinates
+    Assert(dag(begin(t0)));
+    Assert(dag(begin(t)));
+
     Assert(bifurcate_isomorphic_nonempty(begin(t), begin(t)));
     Assert(bifurcate_isomorphic_nonempty(begin(t), begin(s)));
     Assert(!bifurcate_isomorphic_nonempty(begin(t), begin(t2_345_678)));

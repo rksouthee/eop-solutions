@@ -2712,6 +2712,39 @@ Proc traverse(C c, Proc proc)
 // Exercise 7.3: Use traverse_step and the procedures of Chapter 2 to determine
 // whether the descendants of a bidirectional bifurcate coordinate form a DAG
 
+template <typename C>
+    requires(BidirectionalBifurcate(C))
+struct traverse_step_function {
+    typedef pair<C, visit> T;
+
+    T operator()(T x) { traverse_step(x.m1, x.m0); return x; }
+};
+
+template <typename C>
+struct input_type<traverse_step_function<C>, 0> {
+    typedef pair<C, visit> type;
+};
+
+template <typename C>
+    requires(BidirectionalBifurcate(C))
+struct traverse_step_predicate {
+    typedef pair<C, visit> T;
+
+    bool operator()(const pair<C, visit>& x)
+    {
+        return has_predecessor(x.m0) || x.m1 != post;
+    }
+};
+
+template <typename C>
+    requires(BidirectionalBifurcate(C))
+bool dag(C c)
+{
+    typedef pair<C, visit> T;
+    traverse_step_function<C> f;
+    traverse_step_predicate<C> p;
+    return terminating(T(c, pre), f, p);
+}
 
 template<typename C0, typename C1>
     requires(BifurcateCoordinate(C0) &&
