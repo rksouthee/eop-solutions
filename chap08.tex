@@ -8,3 +8,9 @@
 	Assuming that one of the ranges $(h, t)$ returned by \verb|split_linked| is not empty, explain what
 	iterator $t$ points to and what the value of $\func{successor}(t)$ is.
 \end{exercise}
+
+\begin{solution}
+	If one of the ranges $(h, t)$ is not empty, then $t$ points to the last iterator in the range $[f, l)$ such
+	that $\forall i \in [successor(t), l) p(i) \neq p(t)$. For the successor we have either
+	\[ \func{successor}(t) = l \vee p(t) \neq p(\func{successor}(t)). \]
+\end{solution}
