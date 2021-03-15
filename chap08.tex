@@ -40,3 +40,9 @@
 	At the start of the function, $h$ is either set to $f0$ or $f1$ and is not set again. The function
 	has only two exit points and in one case $l$ equals $l0$ and in the other case $l$ equals $l1$.
 \end{proof}
+
+\begin{lemma}
+	When state $s2$ is reached, $t$ is from the original range $[f0, l0)$, $\func{successor}(t) = l0$, and
+	$f1 \neq l1$; when state $s3$ is reached, $t$ is from the original range $[f1, l1)$,
+	$\func{successor}(t) = l1$, and $f0 \neq l0$.
+\end{lemma}
