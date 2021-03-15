@@ -11,6 +11,7 @@ add_latex_document(eop_sln.tex
 	chap05.tex
 	chap06.tex
 	chap07.tex
+	chap08.tex
 	)
 
 # TODO: Add the header files
