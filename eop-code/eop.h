@@ -2639,6 +2639,40 @@ WeightType(C) weight(C c)
 
 template<typename C>
     requires(BidirectionalBifurcateCoordinate(C))
+WeightType(C) weight_in(C c)
+{
+    // Precondition: $\property{tree}(c)$
+    typedef WeightType(C) N;
+    if (empty(c)) return N(0);
+    C root = c;
+    visit v = pre;
+    N n(0); // Invariant: $n$ is count of $\type{in}$ visits so far
+    do {
+        traverse_step(v, c);
+        if (v == in) n = successor(n);
+    } while (c != root || v != post);
+    return n;
+}
+
+template<typename C>
+    requires(BidirectionalBifurcateCoordinate(C))
+WeightType(C) weight_post(C c)
+{
+    // Precondition: $\property{tree}(c)$
+    typedef WeightType(C) N;
+    if (empty(c)) return N(0);
+    C root = c;
+    visit v = pre;
+    N n(0); // Invariant: $n$ is count of $\type{post}$ visits so far
+    do {
+        traverse_step(v, c);
+        if (v == post) n = successor(n);
+    } while (c != root || v != post);
+    return n;
+}
+
+template<typename C>
+    requires(BidirectionalBifurcateCoordinate(C))
 WeightType(C) height(C c)
 {
     // Precondition: $\property{tree}(c)$
