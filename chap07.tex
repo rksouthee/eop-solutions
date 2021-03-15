@@ -3,3 +3,13 @@
 \begin{lemma}
 	$\func{height\_recursive}(x) \leq \func{weight\_recursive}(x)$
 \end{lemma}
+
+\begin{proof}
+	In the case that $x$ is empty we have
+	\[ \func{height\_recursive}(x) = \func{weight\_recursive}(x) = 0. \]
+	For the case when $x$ is non-empty we just need to show that
+	$\func{max}(l, r) \leq l + r$. If $l = \func{max}(l, r)$ then we have
+	\[ l \leq l + r, \]
+	otherwise, if $\func{max}(l, r) = r$ we have
+	\[ r \leq l + r. \]
+\end{proof}
