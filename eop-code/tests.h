@@ -3049,6 +3049,22 @@ void test_bifurcate_copy_Andrej()
     
 }
 
+void test_unique()
+{
+    // ***** rewrite these tests in terms of procedures on raw coordinates ?????
+    print("    unique\n");
+
+    typedef IteratorType(slist<int>) I;
+    typedef pair<I, I> P;
+
+    array<int> a(5, 5, 1);
+    slist<int> la(a);
+
+    pair<P, P> p = unique(begin(la), end(la), equal<int>(), forward_linker<I>());
+    Assert(p.m0.m1 - p.m0.m0 == 0 && source(p.m0.m0) == 1);
+    Assert(p.m1.m1 - p.m1.m0 == 3);
+}
+
 template<typename Z>
     requires(Integer(Z))
 void test_ch_8()
@@ -3062,6 +3078,7 @@ void test_ch_8()
     algorithms_linked_bifurcate_coordinates<Z>();
 
     test_bifurcate_copy_Andrej<Z>();
+    test_unique();
 }
 
 

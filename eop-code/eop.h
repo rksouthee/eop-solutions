@@ -3379,6 +3379,28 @@ pair<I, I> sort_linked_nonempty_n(I f, DistanceType(I) n,
 
 
 // Exercise 8.4: unique
+template <typename I, typename S, typename R>
+    requires()
+pair< pair<I, I>, pair<I, I> > unique(I f, I l, R r, S set_link)
+{
+    typedef pair<I, I> P;
+    linker_to_tail<S> link_to_tail(set_link);
+    I h0 = l; I t0 = l;
+    I h1 = l; I t1 = l;
+    if (f == l)                                                  goto s3;
+                                    h0 = f; advance_tail(t0, f); goto s0;
+s0: if (f == l)                                                  goto s3;
+    if (r(source(f), source(t0))) { h1 = f; advance_tail(t1, f); goto s2; }
+    else                          {         advance_tail(t0, f); goto s0; }
+s1: if (f == l)                                                  goto s3;
+    if (r(source(f), source(t0))) {         advance_tail(t0, f); goto s1; }
+    else                          {         link_to_tail(t1, f); goto s2; }
+s2: if (f == l)                                                  goto s3;
+    if (r(source(f), source(t1))) {         advance_tail(t1, f); goto s2; }
+    else                          {         link_to_tail(t0, f); goto s1; }
+s3: return pair<P, P>(P(h0, t0), P(h1, t1));
+}
+// End Exercise 8.4
 
 
 template<typename C>
