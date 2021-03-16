@@ -32,9 +32,3 @@ add_executable(eop
 	eop-code/type_functions.h
 	eop-code/eop.cpp
 	)
-
-add_executable(levy code/levy.cpp)
-target_include_directories(levy PRIVATE eop-code)
-
-add_executable(brent code/brent.cpp)
-target_include_directories(brent PRIVATE eop-code)
