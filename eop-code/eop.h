@@ -312,12 +312,12 @@ Domain(F) connection_point(const Domain(F)& x, F f, P p)
 template <typename F, typename P>
     requires(Transformation(F) && UnaryPredicate(P) &&
         Domain(F) == Domain(P))
-bool intersects(const Domain(F)& x0,
-                const Domain(F)& x1, F f, P p)
+bool intersects(Domain(F) x0, Domain(F) x1, F f, P p)
 {
-    // Precondition: $p(x) \Leftrightarrow \text{$f(x)$ is defined}$
-    return connection_point(x0, f, p) ==
-        connection_point(x1, f, p);
+    // Precondition: $p(x) \Leftrightarrow f(x) \text{ is defined}$
+    x0 = connection_point(x0, f, p);
+    x1 = connection_point(x1, f, p);
+    return x0 == x1;
 }
 
 // Exercise 2.3:
