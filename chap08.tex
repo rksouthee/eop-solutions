@@ -73,3 +73,8 @@
 	our input ranges are increasing bounded ranges, \verb|merge_linked_nonempty| is an increasing bounded
 	range.
 \end{proof}
+
+\begin{lemma}
+	If $i0 \in [f0, l0)$ and $i1 \in [f1, l1)$ are iterators whose values are equivalent under $r$, in the
+	merge of these ranges with \verb|merge_linked_nonempty|, $i0 \prec i1$.
+\end{lemma}
