@@ -423,6 +423,15 @@ void test_ch_2()
     Assert(euclidean_norm(3., 4.) == 5.);
     Assert(euclidean_norm(3., 4., 5.) == euclidean_norm(euclidean_norm(3., 4.), 5.));
 
+    Assert(addition_predicate(INT_MAX, 0));
+    Assert(addition_predicate(0, INT_MAX));
+    Assert(addition_predicate(INT_MIN, 0));
+    Assert(addition_predicate(0, INT_MIN));
+    Assert(!addition_predicate(INT_MAX, 1));
+    Assert(!addition_predicate(1, INT_MAX));
+    Assert(!addition_predicate(-1, INT_MIN));
+    Assert(!addition_predicate(INT_MIN, -1));
+
     concept_Transformation(sq<int>(), 2);
     concept_Transformation(gen_orbit<int, unsigned>(0, 0u, 5u), 0);
     concept_Transformation(hf<int>(), 16);

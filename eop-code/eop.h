@@ -171,6 +171,15 @@ double euclidean_norm(double x, double y, double z) {
     return sqrt(x * x + y * y + z * z);
 } // ternary operation
 
+// Exercise 2.1:
+
+bool addition_predicate(int x, int y)
+{
+    if (x < 0)
+        return y >= INT_MIN - x;
+    return y <= INT_MAX - x;
+}
+
 template<typename F, typename N>
     requires(Transformation(F) && Integer(N))
 Domain(F) power_unary(Domain(F) x, N n, F f)
