@@ -9,7 +9,7 @@ add_latex_document(doc/eop_sln.tex
 	eop-code/eop.h
 	eop-code/integers.h
 	doc/chap01.tex
-	doc/chap02.tex code/ex_2_2.cpp
+	doc/chap02.tex
 	doc/chap03.tex
 	doc/chap04.tex code/ex_4_1.cpp
 	doc/chap05.tex
@@ -32,9 +32,6 @@ add_executable(eop
 	eop-code/type_functions.h
 	eop-code/eop.cpp
 	)
-
-add_executable(ex_2_2 code/ex_2_2.cpp)
-target_include_directories(ex_2_2 PRIVATE eop-code)
 
 add_executable(levy code/levy.cpp)
 target_include_directories(levy PRIVATE eop-code)

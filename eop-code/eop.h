@@ -307,6 +307,19 @@ Domain(F) connection_point(const Domain(F)& x, F f, P p)
     return convergent_point(x, f(y), f);
 }
 
+// Exercise 2.2:
+
+template <typename F, typename P>
+    requires(Transformation(F) && UnaryPredicate(P) &&
+        Domain(F) == Domain(P))
+bool intersects(const Domain(F)& x0,
+                const Domain(F)& x1, F f, P p)
+{
+    // Precondition: $p(x) \Leftrightarrow \text{$f(x)$ is defined}$
+    return connection_point(x0, f, p) ==
+        connection_point(x1, f, p);
+}
+
 // Exercise 2.3:
 
 template<typename F>
