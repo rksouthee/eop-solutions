@@ -11,7 +11,7 @@ add_latex_document(doc/eop_sln.tex
 	doc/chap01.tex
 	doc/chap02.tex
 	doc/chap03.tex
-	doc/chap04.tex code/ex_4_1.cpp
+	doc/chap04.tex
 	doc/chap05.tex
 	doc/chap06.tex
 	doc/chap07.tex
@@ -38,6 +38,3 @@ target_include_directories(levy PRIVATE eop-code)
 
 add_executable(brent code/brent.cpp)
 target_include_directories(brent PRIVATE eop-code)
-
-add_executable(ex_4_1 code/ex_4_1.cpp)
-target_include_directories(ex_4_1 PRIVATE eop-code)
