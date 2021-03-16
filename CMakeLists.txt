@@ -4,18 +4,18 @@ project(eop-solutions LANGUAGES CXX)
 
 include(cmake/UseLATEX.cmake)
 
-add_latex_document(eop_sln.tex
+add_latex_document(doc/eop_sln.tex
 	INPUTS
 	eop-code/eop.h
 	eop-code/integers.h
-	chap01.tex
-	chap02.tex code/ex_2_1.cpp code/ex_2_2.cpp
-	chap03.tex
-	chap04.tex code/ex_4_1.cpp
-	chap05.tex
-	chap06.tex
-	chap07.tex
-	chap08.tex
+	doc/chap01.tex
+	doc/chap02.tex code/ex_2_1.cpp code/ex_2_2.cpp
+	doc/chap03.tex
+	doc/chap04.tex code/ex_4_1.cpp
+	doc/chap05.tex
+	doc/chap06.tex
+	doc/chap07.tex
+	doc/chap08.tex
 	)
 
 add_executable(eop
