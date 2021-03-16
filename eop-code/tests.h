@@ -2770,16 +2770,16 @@ void algorithms_bidirectional_bifurcate_coordinates()
     Assert(height(begin(t))          == N(4));
 
     // Exercise 7.2
-    Assert(weight_in(begin(t0))           == N(0));
-    Assert(weight_in(begin(t4))           == N(1));
-    Assert(weight_in(begin(t3_45))        == N(3));
-    Assert(weight_in(begin(t2_345_678))   == N(7));
-    Assert(weight_in(begin(t))            == N(15));
-    Assert(weight_post(begin(t0))         == N(0));
-    Assert(weight_post(begin(t4))         == N(1));
-    Assert(weight_post(begin(t3_45))      == N(3));
-    Assert(weight_post(begin(t2_345_678)) == N(7));
-    Assert(weight_post(begin(t))          == N(15));
+    /* Assert(weight_in(begin(t0))           == N(0)); */
+    /* Assert(weight_in(begin(t4))           == N(1)); */
+    /* Assert(weight_in(begin(t3_45))        == N(3)); */
+    /* Assert(weight_in(begin(t2_345_678))   == N(7)); */
+    /* Assert(weight_in(begin(t))            == N(15)); */
+    /* Assert(weight_post(begin(t0))         == N(0)); */
+    /* Assert(weight_post(begin(t4))         == N(1)); */
+    /* Assert(weight_post(begin(t3_45))      == N(3)); */
+    /* Assert(weight_post(begin(t2_345_678)) == N(7)); */
+    /* Assert(weight_post(begin(t))          == N(15)); */
 
     proc.n_pre = 0; proc.n_in = 0; proc.n_post = 0;
     proc = traverse(begin(t0), proc);
@@ -2799,8 +2799,8 @@ void algorithms_bidirectional_bifurcate_coordinates()
 
     // Exercise 7.3
     // TODO Add more tests when we get to mutable coordinates
-    Assert(dag(begin(t0)));
-    Assert(dag(begin(t)));
+    /* Assert(dag(begin(t0))); */
+    /* Assert(dag(begin(t))); */
 
     Assert(bifurcate_isomorphic_nonempty(begin(t), begin(t)));
     Assert(bifurcate_isomorphic_nonempty(begin(t), begin(s)));
