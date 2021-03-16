@@ -67,3 +67,9 @@
 	If $[f0, l0)$ and $[f1, l1)$ are nonempty increasing bounded ranges, their merge with
 	\verb|merge_linked_nonempty| is an increasing bounded range.
 \end{lemma}
+
+\begin{proof}
+	Since \verb|combine_linked_nonempty| is a precedence-preserving link rearrangement (Lemma 8.5), and
+	our input ranges are increasing bounded ranges, \verb|merge_linked_nonempty| is an increasing bounded
+	range.
+\end{proof}
